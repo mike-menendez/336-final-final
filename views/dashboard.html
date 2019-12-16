@@ -61,11 +61,24 @@
         <div>
             <h3 class="text-center">User's URL</h3>
         </div>
-        <div class="buttongroup">
-            <button class="btn btn-success">Upload Background</button>
-            <button class="btn btn-success">View All Appointments</button>
-            <button class="btn btn-success">Add new Time Slot</button>
-            <button class="btn btn-success">Remove Time Slot</button>
+        <div class="buttongroup justify-content-center d-flex m-5">
+            <button class="btn btn-success bk">Upload Background</button>
+            <button class="btn btn-success view_all">View All Appointments</button>
+            <button class="btn btn-success add_new">Add new Time Slot</button>
+            <button class="btn btn-success rmrf">Remove Time Slot</button>
+        </div>
+        <div class="modal add-new">
+            <div class="modal-content color: transparent;">
+                <span class="close">&times;</span>
+                <h1 class="p-5 m-5 text-center">Add new time</h1>
+                <div class="d-flex justify-content-center">
+                    <form>
+                        Date: <input type="date" class="date-add"> Start:
+                        <input type="time" class="start-add"> End: <input type="time" class="end-add">
+                    </form>
+                </div>
+                <button class="btn btn-info sub_add-new">Submit</button>
+            </div>
         </div>
     </div>
     <script src="/js/aux.js"></script>

@@ -9,7 +9,7 @@ CREATE TABLE users(
 
 CREATE TABLE time_block(
     b_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    day DATE,
+    day TEXT,
     stime TEXT,
     etime TEXT,
     uuid INTEGER NOT NULL,
