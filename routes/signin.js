@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.post('/register', function(req, res, next) {
     bcrypt.hash("hashbrown", 10)
         .then(function(hashed) {
-            req.pass = hashed;
+            req.body.pass = hashed;
 
             var connection = mysql.createConnection({
                 host: "b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
