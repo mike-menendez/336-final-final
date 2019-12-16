@@ -22,16 +22,18 @@ router.post('/add', function(req, res, next) {
     connection.connect();
     console.log("req body: ", req.body);
     // get uuid:
-    connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], (err, r) => {
+    var x = connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], (err, r) => {
         if (err) {
             console.log(err);
             throw err;
         }
         console.log("r: ", r);
-        console.log("r[0].uuid", r[0].uuid);
-        req.body.u = r[0].uuid;
+        console.log("r[0].uuid: ", r[0].uuid);
+        console.log(x);
+        return r[0].uuid;
     });
-    connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, req.body.u], (e) => {
+    console.log("x: ", x);
+    connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, x], (e) => {
         if (e) {
             console.log("error connecting to db or running query: ", e);
             throw e;
