@@ -37,11 +37,7 @@ router.post('/add', function(req, res, next) {
             throw e;
         }
         connection.end();
-    }).then(() => {
         res.json({ valid: "ok" });
-    }).catch((err) => {
-        console.log("error creating time block ", err);
-        throw err;
     });
 });
 
