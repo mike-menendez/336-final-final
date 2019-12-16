@@ -28,6 +28,7 @@ $(document).ready(function() {
         var date = $(".date-add").val();
         $.ajax({
             url: "https://cst336-final-final-mmenendez.herokuapp.com/user/add",
+            type: "POST",
             data: { s: start, e: end, d: date, u: sessionStorage.getItem("user") },
             success: function(res) {
                 Swal.fire({
