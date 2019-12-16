@@ -56,9 +56,9 @@ router.post('/', function(req, res, next) {
             throw err;
         }
         console.log("passed init err ");
-        console.log("results: ", results.pass);
+        console.log("results: ", JSON.parse(results).pass);
 
-        if (bcrypt.compare(req.body.password, results.pass)) {
+        if (bcrypt.compare(req.body.password, JSON.parse(results).pass)) {
             console.log("bcrypt comparison pass");
             res.json({ valid: "ok" }).status(200);
         } else {
