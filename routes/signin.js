@@ -33,7 +33,7 @@ router.post('/register', function(req, res, next) {
             });
             connection.end();
         }).then(() => {
-            res.send("ok");
+            res.json({ valid: "ok" });
         }).catch((err) => {
             console.log("error creating user: ", err);
             throw err;
