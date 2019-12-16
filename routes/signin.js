@@ -56,12 +56,12 @@ router.post('/', function(req, res, next) {
             throw err;
         }
 
-        if (bcrypt.compare(req.pass, JSON.stringify(results).pass)) {
+        if (bcrypt.compareSync(req.pass, JSON.stringify(results).pass)) {
             console.log("bcrypt comparison pass");
-            res.json({ valid: "ok" });
+            res.json({ valid: "ok" }).status(200);
         } else {
             console.log("bcrypt comparison FAILED");
-            res.status(403).send("bad");
+            res.json({ valid: "false" }).status(200);
         }
     });
 });
