@@ -22,18 +22,16 @@ router.post('/add', function(req, res, next) {
     connection.connect();
     console.log("req body: ", req.body);
     // get uuid:
-    // connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], (err, r) => {
-    //     if (err) {
-    //         console.log(err);
-    //         throw err;
-    //     }
-    //     console.log("r: ", r);
-    //     console.log("r[0]", r[0]);
-    //     req.body.u = r[0];
-    // });
-    connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e,
-        connection.query("SELECT uuid from users WHERE uname = ?"), [req.body.u], (err, r) => { return r[0]; }
-    ], (e) => {
+    connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], (err, r) => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+        console.log("r: ", r);
+        console.log("r[0]", r[0]);
+        req.body.u = r[0];
+    });
+    connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, req.body.u], (e) => {
         if (e) {
             console.log("error connecting to db or running query: ", e);
             throw e;
@@ -42,7 +40,7 @@ router.post('/add', function(req, res, next) {
     }).then(() => {
         res.json({ valid: "ok" });
     }).catch((err) => {
-        console.log("error creating user: ", err);
+        console.log("error creating time block ", err);
         throw err;
     });
 });
