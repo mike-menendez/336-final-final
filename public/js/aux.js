@@ -67,7 +67,7 @@ $(document).ready(function() {
                     if (x.icon == 'error') {
                         window.location.reload();
                     } else {
-                        window.location.replace("https://cst336-final-final-mmenendez.herokuapp.com/");
+                        window.location.replace("https://cst336-final-final-mmenendez.herokuapp.com/user/dashboard");
                     }
                 });
             }
@@ -106,7 +106,7 @@ $(".reg").on("click", () => {
                     sessionStorage.setItem("user", $(".uname").val());
                 }
             }).then(() => {
-                window.location.replace("https://cst336-final-final-mmenendez.herokuapp.com/user");
+                window.location.replace("https://cst336-final-final-mmenendez.herokuapp.com/user/dashboard");
             });
         }
     });
