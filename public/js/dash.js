@@ -12,7 +12,7 @@ $(document).ready(function() {
     });
     // View all by user id
     $(".view_all").on("click", () => {
-        window.location("https://cst336-final-final-mmenendez.herokuapp.com/user/all");
+        window.location.replace("https://cst336-final-final-mmenendez.herokuapp.com/user/all");
     });
     // Make new timeslot
     $(".add_new").on("click", () => {
