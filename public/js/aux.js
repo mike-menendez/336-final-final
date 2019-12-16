@@ -52,6 +52,7 @@ $(document).ready(function() {
                         confirmButtonText: 'Take Me Home'
                     };
                     sessionStorage.setItem("auth", "true");
+                    sessionStorage.setItem("user", $(".uname"));
                 } else {
                     x = {
                         title: "Login Failure",
@@ -101,7 +102,8 @@ $(".reg").on("click", () => {
                 if (x.icon == 'error') {
                     window.location.reload();
                 } else {
-                    sessionStorage.put("auth", "true");
+                    sessionStorage.setItem("auth", "true");
+                    sessionStorage.setItem("user", $(".uname"));
                 }
             }).then(() => {
                 window.location.replace("https://cst336-final-final-mmenendez.herokuapp.com/user");
