@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-    bcrypt.hash("hashbrown", 10)
+    bcrypt.hash(req.body.pass, 10)
         .then(function(hashed) {
             req.body.pass = hashed;
 
@@ -64,7 +64,6 @@ router.post('/', function(req, res, next) {
                 console.log(err);
                 throw err;
             }
-            console.log("r: ", r);
             if (!r) {
                 console.log("bcrypt comparison FAILED");
                 res.json({ valid: "false" }).status(200);
