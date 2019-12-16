@@ -32,11 +32,12 @@ router.post('/register', function(req, res, next) {
                 }
             });
         }).then(() => {
-            res.send("ok");
+            res.json({ valid: "ok" });
         }).catch((err) => {
             console.log("error creating user: ", err);
             throw err;
         });
+    connection.end();
 });
 
 router.post('/', function(req, res, next) {
