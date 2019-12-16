@@ -58,13 +58,20 @@ router.post('/', function(req, res, next) {
         console.log("passed init err ");
         console.log("results: ", results[0].pass);
 
-        if (bcrypt.compare(req.body.password, results[0].pass)) {
-            console.log("bcrypt comparison pass");
-            res.json({ valid: "ok" }).status(200);
-        } else {
-            console.log("bcrypt comparison FAILED");
-            res.json({ valid: "false" }).status(200);
-        }
+        bcrypt.compare(req.body.password, results[0].pass, function(err, r) {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+
+            if (r == true) {
+                console.log("bcrypt comparison pass");
+                res.json({ valid: "ok" }).status(200);
+            } else {
+                console.log("bcrypt comparison FAILED");
+                res.json({ valid: "false" }).status(200);
+            }
+        });
     });
 });
 
