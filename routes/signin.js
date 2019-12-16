@@ -18,7 +18,7 @@ router.post('/register', function(req, res, next) {
 
             var connection = mysql.createConnection({
                 host: "b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-                user: "iwn4gjz7ymvpr6fq	",
+                user: "iwn4gjz7ymvpr6fq",
                 password: "iavl3w3xoaemrmmc",
                 database: "oia3z2rlvk31por6"
             });
@@ -40,7 +40,7 @@ router.post('/register', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var connection = mysql.createConnection({
         host: "b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        user: "iwn4gjz7ymvpr6fq	",
+        user: "iwn4gjz7ymvpr6fq",
         password: "iavl3w3xoaemrmmc",
         database: "oia3z2rlvk31por6"
     });
