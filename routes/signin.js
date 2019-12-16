@@ -50,13 +50,13 @@ router.post('/', function(req, res, next) {
 
     connection.connect();
 
-    connection.query("SELECT pass FROM users WHERE uname = ?", [req.uname], function(err, results) {
+    connection.query("SELECT pass FROM users WHERE uname = ?", [req.body.username], function(err, results) {
         if (err) {
             console.log("err: ", err);
             throw err;
         }
 
-        if (bcrypt.compareSync(req.pass, JSON.stringify(results).pass)) {
+        if (bcrypt.compareSync(req.body.password, JSON.stringify(results).pass)) {
             console.log("bcrypt comparison pass");
             res.json({ valid: "ok" }).status(200);
         } else {
