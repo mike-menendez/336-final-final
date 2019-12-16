@@ -10,7 +10,7 @@ router.get('/dashboard', function(req, res, next) {
     res.render("dashboard.html");
 });
 
-router.put('/add', function(req, res, next) {
+router.post('/add', function(req, res, next) {
     var connection = mysql.createConnection({
         host: "b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         user: "iwn4gjz7ymvpr6fq",
