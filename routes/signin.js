@@ -32,7 +32,7 @@ router.post('/register', function(req, res, next) {
                 }
             });
         }).then(() => {
-            res.send();
+            res.send("ok");
         }).catch((err) => {
             console.log("error creating user: ", err);
             throw err;
@@ -56,7 +56,7 @@ router.post('/', function(req, res, next) {
         }
 
         if (bcrypt.compare(req.pass, JSON.stringify(results).pass)) {
-            res.send("ok");
+            res.json({ valid: "ok" });
         } else {
             res.status(403).send("bad");
         }

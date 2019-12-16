@@ -84,7 +84,7 @@ $(".reg").on("click", () => {
         type: "POST",
         data: x,
         success: function(res) {
-            if (res.x == "ok") {
+            if (res.valid == "ok") {
                 x = {
                     title: "Register Successful",
                     text: "Redirecting you to your homepage",
