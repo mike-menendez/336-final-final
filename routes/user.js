@@ -28,8 +28,8 @@ router.post('/add', function(req, res, next) {
             throw err;
         }
         console.log("r: ", r);
-        console.log("r[0]", r[0]);
-        req.body.u = r[0];
+        console.log("r[0].uuid", r[0].uuid);
+        req.body.u = r[0].uuid;
     });
     connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, req.body.u], (e) => {
         if (e) {
