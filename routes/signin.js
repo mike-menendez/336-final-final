@@ -25,7 +25,7 @@ router.post('/register', function(req, res, next) {
 
             connection.connect();
             console.log("req body: ", req.body);
-            connection.query("INSERT INTO users ", [req.body.user, req.body.pass], (e) => {
+            connection.query("INSERT INTO users (uname, pass) VALUES (?, ?)", [req.body.user, req.body.pass], (e) => {
                 console.log("error connecting to db or running query: ", e);
                 throw e;
             });
