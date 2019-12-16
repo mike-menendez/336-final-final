@@ -1,5 +1,3 @@
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
-
 $(document).ready(function() {
     $(".jumbotron").replaceWith('<div class = "jumbotron shadow">\n' +
         '<h1 class = "text-center">' + window.sessionStorage.getItem("user") + '\'s homepage!</h1></div>');
