@@ -29,7 +29,6 @@ router.post('/add', function(req, res, next) {
         }
         console.log("r: ", r);
         console.log("r[0].uuid: ", r[0].uuid);
-        console.log(x);
         connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, r[0].uuid], (e) => {
             if (e) {
                 console.log("error connecting to db or running query: ", e);
