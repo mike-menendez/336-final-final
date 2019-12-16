@@ -22,6 +22,7 @@ router.post('/add', function(req, res, next) {
     connection.connect();
     console.log("req body: ", req.body);
     // get uuid:
+    var x;
     connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], (err, r) => {
         if (err) {
             console.log(err);
