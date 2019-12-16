@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+    res.send("I don't remember what I made this one for lol");
 });
 
 router.get('/dashboard', function(req, res, next) {
@@ -38,6 +38,40 @@ router.post('/add', function(req, res, next) {
             res.json({ valid: "ok" });
         });
     });
+
+});
+
+router.get('/all', function(req, res, next) {
+    res.render('all.html');
+});
+
+router.post('/all', function(req, res, next) {
+    var connection = mysql.createConnection({
+        host: "b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        user: "iwn4gjz7ymvpr6fq",
+        password: "iavl3w3xoaemrmmc",
+        database: "oia3z2rlvk31por6"
+    });
+
+    connection.connect();
+    connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], function(err, result) {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+
+        connection.query("SELECT * FROM time_block WHERE uuid = ?", [result[0].uuid], function(err, results) {
+            if (err) {
+                console.log("inner query err: ", err);
+                throw err;
+            }
+            res.send(results);
+        });
+    });
+    connection.end();
+});
+
+router.delete('/del', function(req, res, next) {
 
 });
 
