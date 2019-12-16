@@ -31,13 +31,13 @@ router.post('/register', function(req, res, next) {
                     throw e;
                 }
             });
+            connection.end();
         }).then(() => {
-            res.json({ valid: "ok" });
+            res.send("ok");
         }).catch((err) => {
             console.log("error creating user: ", err);
             throw err;
         });
-    connection.end();
 });
 
 router.post('/', function(req, res, next) {
