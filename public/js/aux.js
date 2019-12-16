@@ -44,7 +44,7 @@ $(document).ready(function() {
             success: function(res) {
                 console.log(res.valid);
                 var x;
-                if (res.valid == true) {
+                if (res.valid == "ok") {
                     x = {
                         title: "Login Success!",
                         icon: 'success',
