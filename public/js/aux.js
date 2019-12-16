@@ -42,9 +42,9 @@ $(document).ready(function() {
             type: "POST",
             data: { username: username, password: password },
             success: function(res) {
-                console.log(res.auth);
+                console.log(res.valid);
                 var x;
-                if (res.auth == true) {
+                if (res.valid == true) {
                     x = {
                         title: "Login Success!",
                         icon: 'success',
