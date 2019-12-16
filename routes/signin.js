@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 var mysql = require('mysql');
 
 bcrypt.hash("hashbrown", 10);
@@ -64,13 +64,14 @@ router.post('/', function(req, res, next) {
                 console.log(err);
                 throw err;
             }
-
-            if (r == true) {
-                console.log("bcrypt comparison pass");
-                res.json({ valid: "ok" }).status(200);
-            } else {
+            console.log("r: ", r);
+            if (!r) {
                 console.log("bcrypt comparison FAILED");
                 res.json({ valid: "false" }).status(200);
+
+            } else {
+                console.log("bcrypt comparison pass");
+                res.json({ valid: "ok" }).status(200);
             }
         });
     });
