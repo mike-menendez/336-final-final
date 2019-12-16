@@ -22,7 +22,6 @@ router.post('/add', function(req, res, next) {
     connection.connect();
     console.log("req body: ", req.body);
     // get uuid:
-    var x;
     connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], (err, r) => {
         if (err) {
             console.log(err);
@@ -31,17 +30,16 @@ router.post('/add', function(req, res, next) {
         console.log("r: ", r);
         console.log("r[0].uuid: ", r[0].uuid);
         console.log(x);
-        x = r[0].uuid;
+        connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, r[0].uuid], (e) => {
+            if (e) {
+                console.log("error connecting to db or running query: ", e);
+                throw e;
+            }
+            connection.end();
+            res.json({ valid: "ok" });
+        });
     });
-    console.log("x: ", x);
-    connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, x], (e) => {
-        if (e) {
-            console.log("error connecting to db or running query: ", e);
-            throw e;
-        }
-        connection.end();
-        res.json({ valid: "ok" });
-    });
+
 });
 
 module.exports = router;
