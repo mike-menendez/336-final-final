@@ -101,7 +101,7 @@ $(".reg").on("click", () => {
                 if (x.icon == 'error') {
                     window.location.reload();
                 } else {
-                    window.sessionStorage.put("auth", "true");
+                    sessionStorage.put("auth", "true");
                 }
             }).then(() => {
                 window.location.replace("https://cst336-final-final-mmenendez.herokuapp.com/user");

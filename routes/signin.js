@@ -57,8 +57,10 @@ router.post('/', function(req, res, next) {
         }
 
         if (bcrypt.compare(req.pass, JSON.stringify(results).pass)) {
+            console.log("bcrypt comparison pass");
             res.json({ valid: "ok" });
         } else {
+            console.log("bcrypt comparison FAILED");
             res.status(403).send("bad");
         }
     });
