@@ -43,6 +43,7 @@ $(document).ready(function() {
                                     title: "Deleted Successfully",
                                     icon: "success"
                                 });
+                                location.reload();
                             }
                         });
                     }
