@@ -26,19 +26,28 @@ $(document).ready(function() {
             $(".lol").replaceWith(x);
 
             $(".abc").on("click", (e) => {
-                $.ajax({
-                    url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
-                    type: "POST",
-                    data: { id: $(e.target).attr("id") },
-                    success: () => {
-                        Swal.fire({
-                            title: "Deleted Successfully",
-                            icon: "success"
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Deletion is irreversible!!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Full Send It"
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
+                            type: "POST",
+                            data: { id: $(e.target).attr("id") },
+                            success: () => {
+                                Swal.fire({
+                                    title: "Deleted Successfully",
+                                    icon: "success"
+                                });
+                            }
                         });
                     }
                 });
             });
         }
     });
-
 });
