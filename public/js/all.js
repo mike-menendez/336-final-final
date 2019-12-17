@@ -17,9 +17,9 @@ $(document).ready(function() {
                 if (!element.booked) {
                     x = x + '<td style = "text-align: left">Not Booked</td>';
                 } else {
-                    x = x + '<td style = "text-align: left" class = "btn btn-error' +
+                    x = x + '<td style = "text-align: left" class = "btn btn-error a-' +
                         element.b_id + '">Delete</td>';
-                    $("\"." + element.b_id + "\"").on("click", () => {
+                    $("\".a-" + element.b_id + "\"").on("click", () => {
                         $.ajax({
                             url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
                             type: "DELETE",
