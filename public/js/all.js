@@ -6,8 +6,8 @@ $(document).ready(function() {
         data: { u: sessionStorage.getItem("user") },
         success: function(result) {
             var x = '<div class = "card container shadow p-5">' +
-                '<table><thead><tr><th style = "text-align:left">Block #</th>' +
-                '<th style = "text-align: left>Day</th><th style = "text-align: left>Start</th>' +
+                '<table><thead><tr><th style = "text-align:left">Day</th>' +
+                '<th style = "text-align: left>Start</th>' +
                 '<th style = "text-align: left>End</th><th style="text-align:left">Booked</th></tr></thead>';
             result.forEach(element => {
                 x = x + '<tr><td style = "text-align:left>' + element.b_id + '</td>\n' +
@@ -24,21 +24,21 @@ $(document).ready(function() {
             x = x + "</tbody></table></div>";
 
             $(".lol").replaceWith(x);
-
-            $(".abc").on("click", () => {
-                var temp = this.id;
-                $.ajax({
-                    url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
-                    type: "POST",
-                    data: { id: temp },
-                    success: () => {
-                        Swal.fire({
-                            title: "Deleted Successfully",
-                            icon: "success"
-                        });
-                    }
-                });
-            });
         }
+    });
+    $(".abc").on("click", () => {
+        var temp = this.id;
+        console.log("this.id:", temp);
+        $.ajax({
+            url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
+            type: "POST",
+            data: { id: temp },
+            success: () => {
+                Swal.fire({
+                    title: "Deleted Successfully",
+                    icon: "success"
+                });
+            }
+        });
     });
 });
