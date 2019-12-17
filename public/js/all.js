@@ -27,7 +27,7 @@ $(document).ready(function() {
 
             $(".abc").on("click", (e) => {
                 // var temp = $(this).attr("id").val();
-                console.log("e:", $(e).attr("id"));
+                console.log("e.target:", $(e.target).attr("id"));
                 console.log("this.id:", e.id);
                 $.ajax({
                     url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
