@@ -29,7 +29,7 @@ router.post('/add', function(req, res, next) {
         }
         console.log("r: ", r);
         console.log("r[0].uuid: ", r[0].uuid);
-        connection.query("INSERT INTO time_block (day, stime, etime, uuid) VALUES (?, ?, ?, ?)", [req.body.d, req.body.s, req.body.e, r[0].uuid], (e) => {
+        connection.query("INSERT INTO time_block (day, stime, etime, uuid, booked, r_id) VALUES (?, ?, ?, ?, FALSE, -1)", [req.body.d, req.body.s, req.body.e, r[0].uuid], (e) => {
             if (e) {
                 console.log("error connecting to db or running query: ", e);
                 throw e;
