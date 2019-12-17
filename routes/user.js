@@ -80,7 +80,7 @@ router.post('/del', function(req, res, next) {
         database: "oia3z2rlvk31por6"
     });
     connection.connect();
-
+    console.log("r body: ", req.body);
     connection.query("DELETE FROM time_block WHERE b_id = ?", [req.body.id], (err, result) => {
         if (err) {
             console.log("err: ", err);
