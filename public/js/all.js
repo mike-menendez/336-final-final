@@ -29,7 +29,7 @@ $(document).ready(function() {
                 var temp = this.id;
                 $.ajax({
                     url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
-                    type: "DELETE",
+                    type: "POST",
                     data: { id: temp },
                     success: () => {
                         Swal.fire({

@@ -72,7 +72,7 @@ router.post('/all', function(req, res, next) {
     });
 });
 
-router.delete('/del', function(req, res, next) {
+router.post('/del', function(req, res, next) {
     var connection = mysql.createConnection({
         host: "b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         user: "iwn4gjz7ymvpr6fq",
