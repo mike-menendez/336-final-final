@@ -17,7 +17,7 @@ $(document).ready(function() {
                 if (!element.booked) {
                     x = x + '<td style = "text-align: left">Not Booked</td>';
                 } else {
-                    x = x + '<td style = "text-align: left" class = "btn btn-error abc" id="' +
+                    x = x + '<td style = "text-align: left" class = "btn btn-error abc" id="a-' +
                         element.b_id + '">Delete</td>';
                 }
             });
