@@ -25,9 +25,10 @@ $(document).ready(function() {
 
             $(".lol").replaceWith(x);
 
-            $(".abc").on("click", () => {
+            $(".abc").on("click", (e) => {
                 // var temp = $(this).attr("id").val();
-                console.log("this.id:", $(this));
+                console.log("e:", e);
+                console.log("this.id:", $(e));
                 $.ajax({
                     url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
                     type: "POST",
