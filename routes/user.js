@@ -87,7 +87,7 @@ router.post('/del', function(req, res, next) {
             throw err;
         }
         connection.end();
-        res.status(200);
+        res.status(200).send();
     });
 
 });
