@@ -73,6 +73,22 @@ router.post('/all', function(req, res, next) {
 });
 
 router.delete('/del', function(req, res, next) {
+    var connection = mysql.createConnection({
+        host: "b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        user: "iwn4gjz7ymvpr6fq",
+        password: "iavl3w3xoaemrmmc",
+        database: "oia3z2rlvk31por6"
+    });
+    connection.connect();
+
+    connection.query("DELETE FROM time_block WHERE b_id = ?", [req.body.id], (err, result) => {
+        if (err) {
+            console.log("err: ", err);
+            throw err;
+        }
+        connection.end();
+        res.status(200);
+    });
 
 });
 
