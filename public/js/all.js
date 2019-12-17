@@ -26,13 +26,10 @@ $(document).ready(function() {
             $(".lol").replaceWith(x);
 
             $(".abc").on("click", (e) => {
-                // var temp = $(this).attr("id").val();
-                console.log("e.target:", $(e.target).attr("id"));
-                console.log("this.id:", e.id);
                 $.ajax({
                     url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
                     type: "POST",
-                    data: { id: temp },
+                    data: { id: $(e.target).attr("id") },
                     success: () => {
                         Swal.fire({
                             title: "Deleted Successfully",
