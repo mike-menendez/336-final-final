@@ -17,7 +17,7 @@ $(document).ready(function() {
                 if (!element.booked) {
                     x = x + '<td style = "text-align: left">Not Booked</td>';
                 } else {
-                    x = x + '<td style = "text-align: left" class = "btn btn-danger abc" id="a-' +
+                    x = x + '<td style = "text-align: left" class = "btn btn-danger abc" id="' +
                         element.b_id + '">Delete</td>';
                 }
             });
@@ -28,7 +28,7 @@ $(document).ready(function() {
             $(".abc").on("click", (e) => {
                 // var temp = $(this).attr("id").val();
                 console.log("e:", e);
-                console.log("this.id:", $(e));
+                console.log("this.id:", e.id);
                 $.ajax({
                     url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
                     type: "POST",
