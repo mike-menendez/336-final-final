@@ -17,26 +17,28 @@ $(document).ready(function() {
                 if (!element.booked) {
                     x = x + '<td style = "text-align: left">Not Booked</td>';
                 } else {
-                    x = x + '<td style = "text-align: left" class = "btn btn-error a-' +
+                    x = x + '<td style = "text-align: left" class = "btn btn-error abc" id="' +
                         element.b_id + '">Delete</td>';
-                    var t = ".a-" + element.b_id;
-                    $(t).on("click", () => {
-                        $.ajax({
-                            url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
-                            type: "DELETE",
-                            data: { id: element.b_id },
-                            success: () => {
-                                Swal.fire({
-                                    title: "Deleted Successfully",
-                                    icon: "success"
-                                });
-                            }
-                        });
-                    });
                 }
             });
             x = x + "</tbody></table></div>";
+
             $(".lol").replaceWith(x);
+
+            $(".abc").on("click", () => {
+                var temp = this.id;
+                $.ajax({
+                    url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
+                    type: "DELETE",
+                    data: { id: temp },
+                    success: () => {
+                        Swal.fire({
+                            title: "Deleted Successfully",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
         }
     });
 });
