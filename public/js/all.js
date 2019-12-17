@@ -24,21 +24,23 @@ $(document).ready(function() {
             x = x + "</tbody></table></div>";
 
             $(".lol").replaceWith(x);
+
+            $(".abc").on("click", () => {
+                var temp = this.id;
+                console.log("this.id:", temp);
+                $.ajax({
+                    url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
+                    type: "POST",
+                    data: { id: temp },
+                    success: () => {
+                        Swal.fire({
+                            title: "Deleted Successfully",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
         }
     });
-    $(".abc").on("click", () => {
-        var temp = this.id;
-        console.log("this.id:", temp);
-        $.ajax({
-            url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
-            type: "POST",
-            data: { id: temp },
-            success: () => {
-                Swal.fire({
-                    title: "Deleted Successfully",
-                    icon: "success"
-                });
-            }
-        });
-    });
+
 });
