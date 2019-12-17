@@ -54,22 +54,22 @@ router.post('/all', function(req, res, next) {
     });
 
     connection.connect();
-    connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], function(err, result) {
+    connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], (err, result) => {
         if (err) {
             console.log("outter err:", err);
             throw err;
         }
         console.log("results:", result);
         console.log("result[0].uuid", result[0].uuid);
-        connection.query("SELECT * FROM time_block WHERE uuid = ?", [result[0].uuid], function(err, results) {
+        connection.query("SELECT * FROM time_block WHERE uuid = ?", [result[0].uuid], (err, results) => {
             if (err) {
                 console.log("inner query err: ", err);
                 throw err;
             }
+            connection.end();
             res.send(results);
         });
     });
-    connection.end();
 });
 
 router.delete('/del', function(req, res, next) {
