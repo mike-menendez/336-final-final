@@ -19,7 +19,8 @@ $(document).ready(function() {
                 } else {
                     x = x + '<td style = "text-align: left" class = "btn btn-error a-' +
                         element.b_id + '">Delete</td>';
-                    $("\".a-" + element.b_id + "\"").on("click", () => {
+                    var t = ".a-" + element.b_id;
+                    $(t).on("click", () => {
                         $.ajax({
                             url: "https://cst336-final-final-mmenendez.herokuapp.com/user/del",
                             type: "DELETE",
