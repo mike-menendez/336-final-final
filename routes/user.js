@@ -56,10 +56,11 @@ router.post('/all', function(req, res, next) {
     connection.connect();
     connection.query("SELECT uuid FROM users WHERE uname = ?", [req.body.u], function(err, result) {
         if (err) {
-            console.log(err);
+            console.log("outter err:", err);
             throw err;
         }
-
+        console.log("results:", result);
+        console.log("result[0].uuid", result[0].uuid);
         connection.query("SELECT * FROM time_block WHERE uuid = ?", [result[0].uuid], function(err, results) {
             if (err) {
                 console.log("inner query err: ", err);
